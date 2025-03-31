@@ -1,0 +1,13 @@
+name: 'Skpr OSV-SCALIBR Scanner'
+description: 'Scans local repo for OSV-SCALIBR vulnerabilities'
+inputs:
+  scan-args:
+    description: "Arguments to osv-scanner, separated by new line"
+    default: |-
+      --recursive
+      ./
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/google/osv-scanner-action:v2.0.0"
+  args:
+    - ${{ inputs.scan-args }}
